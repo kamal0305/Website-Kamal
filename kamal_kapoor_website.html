@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamal Kapoor | Executive Consultant & Strategic Advisor</title>
+  <style>
+/* ============================================================
+   KAMAL KAPOOR — Personal Website Stylesheet
+   Aesthetic: Luxury Editorial / Dark Gold Executive
+   ============================================================ */
+
+/* ─── CSS Variables ─── */
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dim: rgba(201,168,76,0.15);
+  --gold-border: rgba(201,168,76,0.3);
+  --dark: #0A0A0A;
+  --dark-2: #111111;
+  --dark-3: #181818;
+  --dark-4: #202020;
+  --text: #E8E4DC;
+  --text-muted: #8A8278;
+  --text-mid: #B8B2A8;
+  --white: #FAFAF8;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Outfit', sans-serif;
+  --radius: 4px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background-color: var(--dark);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ─── Custom Cursor ─── */
+.cursor {
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, background 0.3s;
+}
+.cursor-trail {
+  width: 30px; height: 30px;
+  border: 1px solid var(--gold-border);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, opacity 0.3s;
+}
+body:hover .cursor { opacity: 1; }
+
+/* ─── Container ─── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── Navigation ─── */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.5rem 3rem;
+  background: transparent;
+  transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s;
+}
+#navbar.scrolled {
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  padding: 1rem 3rem;
+  border-bottom: 1px solid var(--gold-border);
+}
+.nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; }
+.logo-k { color: var(--gold); font-size: 1.7rem; }
+.logo-rest { color: var(--text); }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  font-family: var(--font-body); font-size: 0.82rem; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-mid); transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition) !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 1.5px; background: var(--text); transition: var(--transition); }
+
+/* ─── Mobile Menu ─── */
+.mobile-menu {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--dark-2);
+  z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transform: translateY(-20px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+.mobile-menu ul { display: flex; flex-direction: column; gap: 2rem; text-align: center; }
+.mobile-menu a {
+  font-family: var(--font-display); font-size: 2.5rem; font-weight: 300;
+  color: var(--text); transition: color var(--transition);
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ─── Buttons ─── */
+.btn-primary {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background: var(--gold);
+  color: var(--dark);
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border-radius: var(--radius);
+  border: 1px solid var(--gold);
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+  cursor: pointer;
+}
+.btn-primary:hover { background: transparent; color: var(--gold); transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  color: var(--text-mid);
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 400;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), color var(--transition), transform var(--transition);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.full-width { width: 100%; text-align: center; }
+
+/* ─── Section Reusables ─── */
+.section-label {
+  font-family: var(--font-body); font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300; line-height: 1.15;
+  color: var(--white);
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-header.centered { text-align: center; }
+.gold-rule {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 1.5rem 0;
+}
+
+/* ─── Reveal Animations ─── */
+.reveal-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-up.visible { opacity: 1; transform: translateY(0); }
+.reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.35s; }
+.delay-4 { transition-delay: 0.5s; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 8rem 3rem 4rem;
+  gap: 4rem;
+  background: var(--dark);
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+.hero-lines {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg, rgba(201,168,76,0.03) 0px, rgba(201,168,76,0.03) 1px, transparent 1px, transparent 80px
+  );
+}
+.hero-content {
+  flex: 1; max-width: 620px; z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold-border);
+  padding: 0.4rem 1rem; border-radius: 100px;
+  margin-bottom: 1.5rem;
+  background: var(--gold-dim);
+}
+.hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300; line-height: 1.05;
+  margin-bottom: 1.5rem;
+  display: flex; flex-direction: column;
+}
+.title-line { display: block; }
+.italic-gold { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: 1rem; font-weight: 300;
+  color: var(--text-muted); line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+.tag {
+  font-size: 0.75rem; font-weight: 400;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  color: var(--text-muted);
+  background: var(--dark-3);
+  transition: border-color var(--transition), color var(--transition);
+}
+.tag:hover { border-color: var(--gold-border); color: var(--gold-light); }
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Hero Image */
+.hero-image-wrap {
+  flex: 0 0 400px; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+}
+.hero-img-frame {
+  position: relative; width: 320px; height: 380px;
+}
+.hero-img {
+  width: 100%; height: 100%; object-fit: cover;
+  border-radius: 2px;
+  filter: grayscale(20%) contrast(1.05);
+}
+.img-accent-line {
+  position: absolute; top: -12px; left: -12px;
+  width: 60%; height: 60%;
+  border-top: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.img-gold-dot {
+  position: absolute; bottom: -8px; right: -8px;
+  width: 20px; height: 20px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.hero-stats {
+  display: flex; gap: 1rem;
+}
+.stat-card {
+  background: var(--dark-3);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  text-align: center; flex: 1;
+}
+.stat-num {
+  display: block;
+  font-family: var(--font-display); font-size: 1.6rem;
+  font-weight: 500; color: var(--gold);
+  line-height: 1;
+}
+.stat-plus { font-size: 1rem; }
+.stat-label {
+  display: block; font-size: 0.65rem; letter-spacing: 0.05em;
+  color: var(--text-muted); margin-top: 0.3rem;
+  text-transform: uppercase;
+}
+.scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(0.5)} }
+
+/* ─── Marquee ─── */
+.marquee-strip {
+  background: var(--dark-3);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  padding: 0.9rem 0; overflow: hidden;
+}
+.marquee-track {
+  display: flex; align-items: center; gap: 2rem;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+.marquee-track span {
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.marquee-track .dot { color: var(--gold); font-size: 0.5rem; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ─── ABOUT ─── */
+.about {
+  padding: 7rem 0;
+  background: var(--dark-2);
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.about-text {
+  font-size: 0.98rem; line-height: 1.85;
+  color: var(--text-mid); margin-bottom: 1.2rem;
+}
+.about-credentials { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.cred {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1rem; border-left: 2px solid var(--gold-border);
+  background: var(--dark-3); border-radius: 0 var(--radius) var(--radius) 0;
+}
+.cred-icon { font-size: 1.2rem; margin-top: 2px; }
+.cred strong { display: block; font-size: 0.9rem; font-weight: 500; color: var(--text); }
+.cred span { font-size: 0.8rem; color: var(--text-muted); }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 1.5rem; margin-bottom: 2.5rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 1px; background: linear-gradient(180deg, var(--gold), transparent);
+}
+.timeline-item { position: relative; padding-bottom: 2rem; padding-left: 1.5rem; }
+.tl-dot {
+  position: absolute; left: -1.95rem; top: 0.3rem;
+  width: 10px; height: 10px;
+  background: var(--gold); border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+.tl-year {
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 0.3rem;
+}
+.tl-content h4 {
+  font-family: var(--font-display); font-size: 1.1rem;
+  font-weight: 500; color: var(--white);
+}
+.tl-content p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+.awards-strip {
+  background: var(--dark-3); border: 1px solid var(--gold-border);
+  border-radius: var(--radius); padding: 1.5rem;
+}
+.awards-title {
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.award-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.award-pills span {
+  font-size: 0.75rem; padding: 0.3rem 0.8rem;
+  background: var(--dark-4); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 100px; color: var(--text-mid);
+}
+
+/* ─── EXPERTISE ─── */
+.expertise {
+  padding: 7rem 0;
+  background: var(--dark);
+}
+.expertise .section-header { margin-bottom: 3.5rem; }
+.expertise-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+}
+.exp-card {
+  position: relative; overflow: hidden;
+  background: var(--dark-2);
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  cursor: default;
+}
+.exp-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.exp-card:hover { background: var(--dark-3); border-color: var(--gold-border); transform: translateY(-4px); }
+.exp-card:hover::before { transform: scaleX(1); }
+.exp-num {
+  font-family: var(--font-display); font-size: 3.5rem; font-weight: 300;
+  color: rgba(201,168,76,0.08); position: absolute; top: 1rem; right: 1.5rem;
+  line-height: 1;
+}
+.exp-icon {
+  font-size: 1.5rem; color: var(--gold-border); margin-bottom: 1rem;
+  transition: color var(--transition);
+}
+.exp-card:hover .exp-icon { color: var(--gold); }
+.exp-card h3 {
+  font-family: var(--font-display); font-size: 1.15rem;
+  font-weight: 500; color: var(--white); margin-bottom: 0.8rem; line-height: 1.3;
+}
+.exp-card p { font-size: 0.85rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 1.2rem; }
+.exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.exp-tags span {
+  font-size: 0.68rem; letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--gold-border);
+  border-radius: 100px; color: var(--gold-light);
+}
+
+/* ─── SERVICES ─── */
+.services {
+  padding: 7rem 0;
+  background: var(--dark-2);
+}
+.services .section-header { margin-bottom: 3rem; }
+.service-item {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+.svc-header {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.5rem 0; cursor: pointer;
+  transition: padding var(--transition);
+}
+.svc-header:hover { padding-left: 0.5rem; }
+.svc-num {
+  font-family: var(--font-display); font-size: 0.85rem;
+  color: var(--gold); letter-spacing: 0.1em; min-width: 30px;
+}
+.svc-header h3 {
+  flex: 1;
+  font-family: var(--font-display); font-size: 1.35rem;
+  font-weight: 400; color: var(--white);
+  transition: color var(--transition);
+}
+.svc-header:hover h3 { color: var(--gold); }
+.svc-arrow {
+  color: var(--text-muted); font-size: 1.1rem;
+  transition: transform var(--transition), color var(--transition);
+}
+.service-item.open .svc-arrow { transform: rotate(90deg); color: var(--gold); }
+.svc-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+  padding: 0 0 0 3rem;
+}
+.service-item.open .svc-body { max-height: 400px; padding: 0 0 1.5rem 3rem; }
+.svc-body p { font-size: 0.9rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 1rem; }
+.svc-body ul { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+.svc-body ul li {
+  font-size: 0.85rem; color: var(--text-muted);
+  padding-left: 1rem; position: relative;
+}
+.svc-body ul li::before {
+  content: '◆'; position: absolute; left: 0;
+  font-size: 0.4rem; color: var(--gold); top: 0.3rem;
+}
+.svc-cta {
+  display: inline-block; font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); border-bottom: 1px solid var(--gold-border);
+  padding-bottom: 2px;
+  transition: border-color var(--transition), letter-spacing var(--transition);
+}
+.svc-cta:hover { letter-spacing: 0.12em; border-color: var(--gold); }
+
+/* ─── WORK ─── */
+.work {
+  padding: 7rem 0;
+  background: var(--dark);
+}
+.work .section-header { margin-bottom: 3.5rem; text-align: center; }
+.work-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.work-card {
+  background: var(--dark-2);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: border-color var(--transition), transform var(--transition);
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+.work-card:hover { border-color: var(--gold-border); transform: translateY(-4px); }
+.work-logo {
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.2em; color: var(--gold);
+  border: 1px solid var(--gold-border);
+  padding: 0.5rem 0.8rem; border-radius: var(--radius);
+  display: inline-block; width: fit-content;
+}
+.work-period { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.work-info h3 {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 500; color: var(--white); margin: 0.3rem 0 0.2rem;
+}
+.work-role { font-size: 0.82rem; color: var(--gold-light); margin-bottom: 0.8rem; }
+.work-desc { font-size: 0.85rem; line-height: 1.75; color: var(--text-muted); }
+.work-metrics {
+  display: flex; gap: 1rem; margin-top: 0.5rem;
+  padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);
+}
+.metric { flex: 1; text-align: center; }
+.metric span {
+  display: block; font-family: var(--font-display); font-size: 1rem;
+  font-weight: 500; color: var(--gold);
+}
+.metric small { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ─── WRITING ─── */
+.writing {
+  padding: 7rem 0;
+  background: var(--dark-2);
+  position: relative; overflow: hidden;
+}
+.writing::before {
+  content: '"'; position: absolute; top: -2rem; right: 2rem;
+  font-family: var(--font-display); font-size: 20rem;
+  color: rgba(201,168,76,0.03); line-height: 1; pointer-events: none;
+}
+.writing-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.writing-left p { font-size: 0.95rem; line-height: 1.85; color: var(--text-mid); }
+.writing-types { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.wt-item { display: flex; gap: 1rem; align-items: flex-start; }
+.wt-icon { color: var(--gold); font-size: 0.8rem; margin-top: 0.2rem; flex-shrink: 0; }
+.wt-item strong { display: block; font-size: 0.95rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+.wt-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+
+.poem-card {
+  background: var(--dark-3);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius);
+  padding: 3rem 2.5rem 2.5rem;
+  position: relative; margin-bottom: 2rem;
+}
+.poem-ornament {
+  position: absolute; top: -1.5rem; left: 2rem;
+  font-family: var(--font-display); font-size: 5rem;
+  color: var(--gold); line-height: 1;
+}
+.poem-text {
+  font-family: var(--font-display); font-size: 1.05rem;
+  font-weight: 300; line-height: 1.9;
+  color: var(--text-mid);
+}
+.poem-text em { color: var(--gold-light); font-style: italic; }
+.poem-attr {
+  margin-top: 1.5rem; font-size: 0.8rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 1rem;
+}
+.writing-stats {
+  background: var(--dark-4); border-radius: var(--radius); padding: 1.5rem;
+}
+.ws-item { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.ws-item span {
+  font-size: 0.75rem; padding: 0.25rem 0.75rem;
+  border: 1px solid var(--gold-border); border-radius: 100px;
+  color: var(--gold-light);
+}
+.ws-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem; }
+
+/* ─── PLATFORMS ─── */
+.platforms {
+  padding: 3rem 0;
+  background: var(--dark-3);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+  text-align: center;
+}
+.platforms-label {
+  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 1.5rem;
+}
+.platform-logos {
+  display: flex; justify-content: center; align-items: center;
+  flex-wrap: wrap; gap: 2rem;
+}
+.plat {
+  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-muted);
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), color var(--transition);
+}
+.plat:hover { border-color: var(--gold-border); color: var(--gold); }
+
+/* ─── CONTACT ─── */
+.contact {
+  padding: 7rem 0;
+  background: var(--dark);
+}
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+.contact-left p { font-size: 0.95rem; line-height: 1.85; color: var(--text-mid); margin-bottom: 2rem; }
+.contact-details { display: flex; flex-direction: column; gap: 1rem; }
+.contact-item {
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 0.9rem; color: var(--text-mid);
+  transition: color var(--transition);
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: var(--radius);
+  background: var(--dark-2);
+}
+.contact-item:hover { color: var(--gold); border-color: var(--gold-border); }
+.ci-icon { font-size: 1rem; }
+
+/* Contact Form */
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label {
+  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--dark-2); border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text); font-family: var(--font-body); font-size: 0.9rem;
+  padding: 0.85rem 1rem; border-radius: var(--radius);
+  outline: none; transition: border-color var(--transition);
+  appearance: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-muted); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group select { cursor: pointer; }
+.form-note {
+  font-size: 0.82rem; text-align: center; color: var(--gold);
+  min-height: 1.2rem;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--dark-2);
+  border-top: 1px solid var(--gold-border);
+  padding: 3rem 0 1.5rem;
+}
+.footer-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 2rem; flex-wrap: wrap;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 1.5rem;
+}
+.footer-brand p { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem; }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; }
+.footer-links a {
+  font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-muted); transition: color var(--transition);
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-social { display: flex; gap: 1rem; }
+.social-btn {
+  font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.5rem 1rem; border: 1px solid var(--gold-border);
+  border-radius: var(--radius); color: var(--gold);
+  transition: background var(--transition);
+}
+.social-btn:hover { background: var(--gold-dim); }
+.footer-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+}
+.footer-bottom p { font-size: 0.75rem; color: var(--text-muted); }
+.footer-tagline { font-style: italic; }
+
+/* ─── Scroll Progress ─── */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index: 9999; transition: width 0.1s linear;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .hero { flex-direction: column; padding: 7rem 2rem 4rem; }
+  .hero-image-wrap { flex: none; width: 100%; align-items: center; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+  .work-cards { grid-template-columns: 1fr; }
+  .writing-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  #navbar { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 6rem 1.5rem 3rem; }
+  .hero-title { font-size: 3rem; }
+  .hero-image-wrap { flex: none; }
+  .hero-img-frame { width: 260px; height: 310px; }
+  .hero-stats { flex-direction: column; width: 260px; }
+  .expertise-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .container { padding: 0 1.5rem; }
+  section { padding: 5rem 0; }
+  .footer-top { flex-direction: column; }
+  .footer-bottom { flex-direction: column; }
+  body { cursor: auto; }
+  .cursor, .cursor-trail { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero-ctas { flex-direction: column; }
+  .hero-title { font-size: 2.5rem; }
+}
+
+</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursor-trail"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="logo-k">K</span><span class="logo-rest">amal Kapoor</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#expertise" class="mob-link">Expertise</a></li>
+      <li><a href="#services" class="mob-link">Services</a></li>
+      <li><a href="#work" class="mob-link">Work</a></li>
+      <li><a href="#writing" class="mob-link">Writing</a></li>
+      <li><a href="#contact" class="mob-link">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-grain"></div>
+      <div class="hero-lines"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">Available for Freelance Projects</div>
+      <h1 class="hero-title reveal-up delay-1">
+        <span class="title-line">Strategic</span>
+        <span class="title-line italic-gold">Partner</span>
+        <span class="title-line">in Growth.</span>
+      </h1>
+      <p class="hero-sub reveal-up delay-2">
+        Executive consultant with 2.5 decades across Banking, Wealth Management<br />
+        & FinTech — and the pen of a storyteller.
+      </p>
+      <div class="hero-tags reveal-up delay-3">
+        <span class="tag">Banking Strategy</span>
+        <span class="tag">Wealth Management</span>
+        <span class="tag">FinTech Advisory</span>
+        <span class="tag">Content Writing</span>
+        <span class="tag">Executive Coaching</span>
+      </div>
+      <div class="hero-ctas reveal-up delay-4">
+        <a href="#services" class="btn-primary">Explore Services</a>
+        <a href="#contact" class="btn-ghost">Let's Connect →</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap reveal-right">
+      <div class="hero-img-frame">
+        <img src="Kamal_Professional_pic2026.png" alt="Kamal Kapoor" class="hero-img" />
+        <div class="img-accent-line"></div>
+        <div class="img-gold-dot"></div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-num">25<span class="stat-plus">+</span></span>
+          <span class="stat-label">Years of Leadership</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">₹800<span class="stat-plus">Cr</span></span>
+          <span class="stat-label">Portfolio Managed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">120<span class="stat-plus">+</span></span>
+          <span class="stat-label">Professionals Led</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Marquee Strip -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>Banking Strategy</span><span class="dot">◆</span>
+      <span>Wealth Management</span><span class="dot">◆</span>
+      <span>JPMorgan Chase</span><span class="dot">◆</span>
+      <span>NatWest Markets</span><span class="dot">◆</span>
+      <span>ING Vysya Bank</span><span class="dot">◆</span>
+      <span>Executive Advisory</span><span class="dot">◆</span>
+      <span>HNI Client Relations</span><span class="dot">◆</span>
+      <span>FinTech Leadership</span><span class="dot">◆</span>
+      <span>Content Writing</span><span class="dot">◆</span>
+      <span>Banking Strategy</span><span class="dot">◆</span>
+      <span>Wealth Management</span><span class="dot">◆</span>
+      <span>JPMorgan Chase</span><span class="dot">◆</span>
+      <span>NatWest Markets</span><span class="dot">◆</span>
+      <span>ING Vysya Bank</span><span class="dot">◆</span>
+      <span>Executive Advisory</span><span class="dot">◆</span>
+      <span>HNI Client Relations</span><span class="dot">◆</span>
+      <span>FinTech Leadership</span><span class="dot">◆</span>
+      <span>Content Writing</span><span class="dot">◆</span>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="section-label">About Me</div>
+          <h2 class="section-title">Amplifying Leadership,<br /><em>Driving Results.</em></h2>
+          <div class="gold-rule"></div>
+          <p class="about-text">
+            I'm Kamal Kapoor — a banking and wealth management executive who has spent 25+ years building, leading, and transforming financial institutions across India and global markets. From managing ₹800 crore portfolios to serving as Chief of Staff at JPMorgan Chase, I bring board-level strategic thinking to every engagement.
+          </p>
+          <p class="about-text">
+            Beyond the boardroom, I'm a passionate writer. I craft compelling essays, speeches that move rooms, and poetry that stays with you. Whether you need a thought-leadership piece, a keynote address, or a brand narrative — words are my second language.
+          </p>
+          <div class="about-credentials">
+            <div class="cred">
+              <span class="cred-icon">🎓</span>
+              <div>
+                <strong>PGPMS (Finance)</strong>
+                <span>K.J. Somaiya Institute, Mumbai</span>
+              </div>
+            </div>
+            <div class="cred">
+              <span class="cred-icon">🎓</span>
+              <div>
+                <strong>B.Com</strong>
+                <span>Sydenham College, Mumbai</span>
+              </div>
+            </div>
+            <div class="cred">
+              <span class="cred-icon">⚡</span>
+              <div>
+                <strong>Certified Scrum Master</strong>
+                <span>Agile Coach & SAFe Certified</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2016 – Present</span>
+                <h4>Chief of Staff & Strategic Program Lead</h4>
+                <p>JPMorgan Chase & Co.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2014 – 2016</span>
+                <h4>Vice President & Chief Manager</h4>
+                <p>NatWest Markets / Royal Bank of Scotland</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">2008 – 2014</span>
+                <h4>Cluster Head – North Mumbai</h4>
+                <p>ING Vysya Bank (now Kotak Mahindra Bank)</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content">
+                <span class="tl-year">Earlier Career</span>
+                <h4>Retail Banking & Branch Leadership</h4>
+                <p>Multiple Financial Institutions</p>
+              </div>
+            </div>
+          </div>
+          <div class="awards-strip">
+            <p class="awards-title">Recognition & Awards</p>
+            <div class="award-pills">
+              <span>🏆 CEO Recognition – Best Cluster</span>
+              <span>🥇 Best Cluster Head – Country</span>
+              <span>🏅 Service Excellence Coach</span>
+              <span>🌟 Cross Revenue Market Award</span>
+              <span>💼 Business Continuity Excellence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section class="expertise" id="expertise">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label">Core Capabilities</div>
+        <h2 class="section-title">Where Strategy<br /><em>Meets Execution</em></h2>
+      </div>
+      <div class="expertise-grid">
+        <div class="exp-card" data-index="01">
+          <div class="exp-num">01</div>
+          <div class="exp-icon">◈</div>
+          <h3>HNI Banking & Wealth Leadership</h3>
+          <p>Deep expertise in affluent and high-net-worth client portfolio management through trust-led engagement, financial solutioning, and long-term relationship value creation.</p>
+          <div class="exp-tags"><span>HNI Portfolios</span><span>Wealth Products</span><span>Relationship Mgmt</span></div>
+        </div>
+        <div class="exp-card" data-index="02">
+          <div class="exp-num">02</div>
+          <div class="exp-icon">◈</div>
+          <h3>Commercial Growth & P&L Ownership</h3>
+          <p>Proven success leading revenue and profitability across CASA, deposits, wealth products, trade, forex, and business banking with scalable revenue outcomes.</p>
+          <div class="exp-tags"><span>P&L Management</span><span>Revenue Growth</span><span>CASA Strategy</span></div>
+        </div>
+        <div class="exp-card" data-index="03">
+          <div class="exp-num">03</div>
+          <div class="exp-icon">◈</div>
+          <h3>FinTech & Technology Advisory</h3>
+          <p>Strategic advisor to CBO Technology at JPMorgan Chase — translating business priorities into actionable insights, governance frameworks, and executive communications.</p>
+          <div class="exp-tags"><span>FinTech Strategy</span><span>Agile/SAFe</span><span>Digital Banking</span></div>
+        </div>
+        <div class="exp-card" data-index="04">
+          <div class="exp-num">04</div>
+          <div class="exp-icon">◈</div>
+          <h3>Executive Strategy & Governance</h3>
+          <p>Enterprise-wide business planning, workforce strategy, budget oversight, and governance leadership with strong operational and regulatory control frameworks.</p>
+          <div class="exp-tags"><span>Governance</span><span>KYC/AML</span><span>Risk Controls</span></div>
+        </div>
+        <div class="exp-card" data-index="05">
+          <div class="exp-num">05</div>
+          <div class="exp-icon">◈</div>
+          <h3>Team & Market Leadership</h3>
+          <p>Extensive experience leading frontline teams, RMs, branch heads, and operations — with strong coaching orientation and succession readiness focus.</p>
+          <div class="exp-tags"><span>Team Building</span><span>Coaching</span><span>Performance Mgmt</span></div>
+        </div>
+        <div class="exp-card" data-index="06">
+          <div class="exp-num">06</div>
+          <div class="exp-icon">◈</div>
+          <h3>Content, Writing & Communication</h3>
+          <p>Compelling essays, thought-leadership articles, keynote speeches, executive communications, poetry, and brand narratives — crafted with precision and depth.</p>
+          <div class="exp-tags"><span>Essay Writing</span><span>Speechwriting</span><span>Poetry</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What I Offer</div>
+        <h2 class="section-title">Freelance Services<br /><em>Tailored for You</em></h2>
+      </div>
+      <div class="services-layout">
+        <div class="services-list">
+
+          <div class="service-item" id="svc-1">
+            <div class="svc-header">
+              <span class="svc-num">01</span>
+              <h3>Banking & Wealth Consulting</h3>
+              <span class="svc-arrow">→</span>
+            </div>
+            <div class="svc-body">
+              <p>Strategic advisory for banks, NBFCs, wealth management firms, and FinTech startups. From franchise growth strategy to portfolio restructuring and regulatory compliance frameworks.</p>
+              <ul>
+                <li>Retail & private banking strategy</li>
+                <li>Wealth product architecture</li>
+                <li>P&L optimization & growth planning</li>
+                <li>Client franchise assessment</li>
+              </ul>
+              <a href="#contact" class="svc-cta">Enquire →</a>
+            </div>
+          </div>
+
+          <div class="service-item" id="svc-2">
+            <div class="svc-header">
+              <span class="svc-num">02</span>
+              <h3>FinTech Strategy & Advisory</h3>
+              <span class="svc-arrow">→</span>
+            </div>
+            <div class="svc-body">
+              <p>Strategic guidance for FinTech companies navigating digital transformation, regulatory landscapes, and product-market fit in the Indian banking ecosystem.</p>
+              <ul>
+                <li>Technology portfolio governance</li>
+                <li>Agile/SAFe transformation advisory</li>
+                <li>Executive reporting & dashboards</li>
+                <li>Digital banking roadmap reviews</li>
+              </ul>
+              <a href="#contact" class="svc-cta">Enquire →</a>
+            </div>
+          </div>
+
+          <div class="service-item" id="svc-3">
+            <div class="svc-header">
+              <span class="svc-num">03</span>
+              <h3>Executive Coaching & Mentoring</h3>
+              <span class="svc-arrow">→</span>
+            </div>
+            <div class="svc-body">
+              <p>One-on-one and group coaching for banking and financial services professionals stepping into leadership roles or navigating complex organizational transitions.</p>
+              <ul>
+                <li>Leadership presence & executive gravitas</li>
+                <li>Career transition guidance</li>
+                <li>Stakeholder management coaching</li>
+                <li>Performance acceleration sessions</li>
+              </ul>
+              <a href="#contact" class="svc-cta">Enquire →</a>
+            </div>
+          </div>
+
+          <div class="service-item" id="svc-4">
+            <div class="svc-header">
+              <span class="svc-num">04</span>
+              <h3>Content Writing & Thought Leadership</h3>
+              <span class="svc-arrow">→</span>
+            </div>
+            <div class="svc-body">
+              <p>High-quality written content for financial professionals, corporates, publications, and platforms seeking authoritative voices in banking, wealth, and leadership.</p>
+              <ul>
+                <li>LinkedIn articles & thought leadership</li>
+                <li>White papers & research briefs</li>
+                <li>Corporate blog content</li>
+                <li>Financial sector newsletters</li>
+              </ul>
+              <a href="#contact" class="svc-cta">Enquire →</a>
+            </div>
+          </div>
+
+          <div class="service-item" id="svc-5">
+            <div class="svc-header">
+              <span class="svc-num">05</span>
+              <h3>Speeches, Essays & Creative Writing</h3>
+              <span class="svc-arrow">→</span>
+            </div>
+            <div class="svc-body">
+              <p>Crafting words that resonate — from keynote addresses for corporate events to personal essays, poetry commissions, and literary pieces that leave lasting impressions.</p>
+              <ul>
+                <li>Keynote & conference speeches</li>
+                <li>Award ceremony addresses</li>
+                <li>Personal & reflective essays</li>
+                <li>Poetry — corporate & personal commissions</li>
+              </ul>
+              <a href="#contact" class="svc-cta">Enquire →</a>
+            </div>
+          </div>
+
+          <div class="service-item" id="svc-6">
+            <div class="svc-header">
+              <span class="svc-num">06</span>
+              <h3>Training, Workshops & Facilitation</h3>
+              <span class="svc-arrow">→</span>
+            </div>
+            <div class="svc-body">
+              <p>Custom training programs and facilitated workshops for banking teams on service excellence, client relationship management, and leadership capability building.</p>
+              <ul>
+                <li>Service excellence programs</li>
+                <li>Relationship management training</li>
+                <li>Leadership & people management workshops</li>
+                <li>Wealth product knowledge sessions</li>
+              </ul>
+              <a href="#contact" class="svc-cta">Enquire →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notable Work Section -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-label">Career Highlights</div>
+        <h2 class="section-title">Proven Impact at<br /><em>Every Level</em></h2>
+      </div>
+      <div class="work-cards">
+        <div class="work-card">
+          <div class="work-logo">JPM</div>
+          <div class="work-info">
+            <span class="work-period">2016 – Present</span>
+            <h3>JPMorgan Chase & Co.</h3>
+            <p class="work-role">Chief of Staff & Lead, Strategic Program Leadership</p>
+            <p class="work-desc">Strategic advisor to senior technology and business leadership. Led enterprise-scale transformation initiatives, workforce strategy, and governance across global financial services operations.</p>
+            <div class="work-metrics">
+              <div class="metric"><span>Global</span><small>Enterprise Scope</small></div>
+              <div class="metric"><span>Multi-Year</span><small>Transformation Programs</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-logo">RBS</div>
+          <div class="work-info">
+            <span class="work-period">2014 – 2016</span>
+            <h3>NatWest Markets / RBS</h3>
+            <p class="work-role">Vice President & Chief Manager</p>
+            <p class="work-desc">Managed an ₹800 crore portfolio across affluent banking, deposits, and wealth-linked relationships. Drove wallet share expansion through relationship-led wealth product deepening during a critical business transition.</p>
+            <div class="work-metrics">
+              <div class="metric"><span>₹800 Cr</span><small>Portfolio Value</small></div>
+              <div class="metric"><span>VP-Level</span><small>Client Markets</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-logo">ING</div>
+          <div class="work-info">
+            <span class="work-period">2008 – 2014</span>
+            <h3>ING Vysya Bank</h3>
+            <p class="work-role">Cluster Head – North Mumbai</p>
+            <p class="work-desc">Full strategic and commercial responsibility for 8 branches and 120+ team members across North Mumbai. Won national recognition as Best Cluster Head while scaling new branches into profitable business units.</p>
+            <div class="work-metrics">
+              <div class="metric"><span>8 Branches</span><small>Network Led</small></div>
+              <div class="metric"><span>120+</span><small>Team Members</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Writing Section -->
+  <section class="writing" id="writing">
+    <div class="container">
+      <div class="writing-inner">
+        <div class="writing-left">
+          <div class="section-label">The Writer in Me</div>
+          <h2 class="section-title">Words That<br /><em>Move People</em></h2>
+          <div class="gold-rule"></div>
+          <p>Beyond strategy and spreadsheets lies a writer who believes the right words can change minds, inspire action, and immortalize moments. I write for leaders, brands, and occasions that demand more than the ordinary.</p>
+          <div class="writing-types">
+            <div class="wt-item">
+              <span class="wt-icon">✦</span>
+              <div>
+                <strong>Essays & Long-form</strong>
+                <p>Reflective, analytical, and personal essays for publications, LinkedIn, and thought-leadership platforms.</p>
+              </div>
+            </div>
+            <div class="wt-item">
+              <span class="wt-icon">✦</span>
+              <div>
+                <strong>Speeches & Addresses</strong>
+                <p>Keynotes, award speeches, and ceremonial addresses that resonate long after the applause fades.</p>
+              </div>
+            </div>
+            <div class="wt-item">
+              <span class="wt-icon">✦</span>
+              <div>
+                <strong>Poetry</strong>
+                <p>Commissions for corporate events, personal milestones, and literary publications — where language becomes art.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" class="btn-primary" style="margin-top:2rem;display:inline-block;">Commission a Piece</a>
+        </div>
+        <div class="writing-right">
+          <div class="poem-card">
+            <div class="poem-ornament">❝</div>
+            <p class="poem-text">
+              In ledgers lies the pulse of trust,<br />
+              each number — a life, not just a must.<br />
+              The banker's art is not to count,<br />
+              but to build on what truly amounts —<br />
+              <em>the faith of those who hand you their dreams,</em><br />
+              <em>and the promise that nothing is less than it seems.</em>
+            </p>
+            <div class="poem-attr">— Kamal Kapoor</div>
+          </div>
+          <div class="writing-stats">
+            <div class="ws-item">
+              <span>Finance</span>
+              <span>Leadership</span>
+              <span>Wealth</span>
+            </div>
+            <div class="ws-item">
+              <span>Human Stories</span>
+              <span>Resilience</span>
+              <span>Growth</span>
+            </div>
+            <p class="ws-note">Writing at the intersection of finance and humanity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms Strip -->
+  <section class="platforms">
+    <div class="container">
+      <p class="platforms-label">Available on top freelancing platforms</p>
+      <div class="platform-logos">
+        <div class="plat">Upwork</div>
+        <div class="plat">Toptal</div>
+        <div class="plat">Fiverr Pro</div>
+        <div class="plat">LinkedIn Services</div>
+        <div class="plat">Freelancer.in</div>
+        <div class="plat">Truelancer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="section-label">Get in Touch</div>
+          <h2 class="section-title">Let's Build<br /><em>Something Great</em></h2>
+          <div class="gold-rule"></div>
+          <p>Whether you're a startup seeking strategic direction, a corporation needing a skilled wordsmith, or a platform looking to engage a finance expert — I'm ready to deliver.</p>
+          <div class="contact-details">
+            <a href="tel:+919820575235" class="contact-item">
+              <span class="ci-icon">📞</span>
+              <span>+91 982 057 5235</span>
+            </a>
+            <a href="mailto:kamal0305@gmail.com" class="contact-item">
+              <span class="ci-icon">✉️</span>
+              <span>kamal0305@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/reachkamal" target="_blank" class="contact-item">
+              <span class="ci-icon">🔗</span>
+              <span>linkedin.com/in/reachkamal</span>
+            </a>
+            <div class="contact-item">
+              <span class="ci-icon">📍</span>
+              <span>Mumbai, India</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-right">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Full name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@company.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service" name="service">
+                <option value="">Select a service...</option>
+                <option>Banking & Wealth Consulting</option>
+                <option>FinTech Strategy & Advisory</option>
+                <option>Executive Coaching & Mentoring</option>
+                <option>Content Writing & Thought Leadership</option>
+                <option>Speeches, Essays & Creative Writing</option>
+                <option>Training, Workshops & Facilitation</option>
+                <option>Other / Multiple Services</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or requirement..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">Send Message →</button>
+            <p class="form-note" id="formNote"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-k">K</span><span class="logo-rest">amal Kapoor</span>
+          <p>Executive Consultant · Strategic Advisor · Writer</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/reachkamal" target="_blank" class="social-btn">LinkedIn ↗</a>
+          <a href="mailto:kamal0305@gmail.com" class="social-btn">Email ↗</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Kamal Kapoor. All rights reserved. | Mumbai, India</p>
+        <p class="footer-tagline">Strategic Partner in Growth. Amplifying Leadership. Driving Results.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+/* ============================================================
+   KAMAL KAPOOR — Website JavaScript
+   Handles: cursor, scroll, animations, accordion, form
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ─── 1. Scroll Progress Bar ─── */
+  const progressBar = document.createElement('div');
+  progressBar.id = 'scroll-progress';
+  document.body.prepend(progressBar);
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  });
+
+
+  /* ─── 2. Custom Cursor ─── */
+  const cursor = document.getElementById('cursor');
+  const cursorTrail = document.getElementById('cursor-trail');
+
+  if (cursor && cursorTrail) {
+    let mouseX = 0, mouseY = 0;
+    let trailX = 0, trailY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+
+    // Smooth trail using requestAnimationFrame
+    function animateTrail() {
+      trailX += (mouseX - trailX) * 0.12;
+      trailY += (mouseY - trailY) * 0.12;
+      cursorTrail.style.left = trailX + 'px';
+      cursorTrail.style.top = trailY + 'px';
+      requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+
+    // Scale on interactive elements
+    const interactives = document.querySelectorAll('a, button, .exp-card, .work-card, .service-item');
+    interactives.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+        cursor.style.background = 'transparent';
+        cursor.style.border = '1px solid var(--gold)';
+        cursorTrail.style.opacity = '0.3';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursor.style.background = 'var(--gold)';
+        cursor.style.border = 'none';
+        cursorTrail.style.opacity = '1';
+      });
+    });
+  }
+
+
+  /* ─── 3. Navbar Scroll Behavior ─── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+
+  /* ─── 4. Mobile Menu ─── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mob-link');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    // Animate hamburger
+    const spans = hamburger.querySelectorAll('span');
+    if (menuOpen) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    }
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      const spans = hamburger.querySelectorAll('span');
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+      document.body.style.overflow = '';
+    });
+  });
+
+
+  /* ─── 5. Scroll Reveal Animations ─── */
+  const revealEls = document.querySelectorAll(
+    '.reveal-up, .reveal-right, .exp-card, .work-card, .service-item, .timeline-item, .wt-item, .cred'
+  );
+
+  const observerOptions = {
+    threshold: 0.12,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        // Stagger for grid items
+        const siblings = el.parentElement?.children;
+        let delay = 0;
+        if (siblings) {
+          const index = Array.from(siblings).indexOf(el);
+          delay = index * 80;
+        }
+        setTimeout(() => {
+          el.classList.add('visible');
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }, delay);
+        revealObserver.unobserve(el);
+      }
+    });
+  }, observerOptions);
+
+  revealEls.forEach(el => {
+    // Only add styles if not already set via CSS class
+    if (!el.classList.contains('reveal-up') && !el.classList.contains('reveal-right')) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    }
+    revealObserver.observe(el);
+  });
+
+
+  /* ─── 6. Services Accordion ─── */
+  const serviceItems = document.querySelectorAll('.service-item');
+
+  serviceItems.forEach(item => {
+    const header = item.querySelector('.svc-header');
+    header.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      serviceItems.forEach(si => si.classList.remove('open'));
+
+      // Toggle clicked
+      if (!isOpen) {
+        item.classList.add('open');
+      }
+    });
+  });
+
+  // Open first service by default
+  if (serviceItems[0]) {
+    serviceItems[0].classList.add('open');
+  }
+
+
+  /* ─── 7. Active Navigation Highlighting ─── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(section => sectionObserver.observe(section));
+
+  // Add active link style
+  const activeStyle = document.createElement('style');
+  activeStyle.textContent = `.nav-links a.active { color: var(--gold) !important; }`;
+  document.head.appendChild(activeStyle);
+
+
+  /* ─── 8. Smooth Scroll for Anchor Links ─── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (href && href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+
+  /* ─── 9. Contact Form Handling ─── */
+  const contactForm = document.getElementById('contactForm');
+  const formNote = document.getElementById('formNote');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email) {
+        formNote.textContent = 'Please fill in your name and email.';
+        formNote.style.color = '#e07070';
+        return;
+      }
+
+      // Simulate a success state (replace with real backend/EmailJS)
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        formNote.textContent = `✓ Message received, ${name}! I'll be in touch within 24 hours.`;
+        formNote.style.color = 'var(--gold)';
+        submitBtn.textContent = 'Message Sent ✓';
+        submitBtn.style.background = 'rgba(201,168,76,0.2)';
+        contactForm.reset();
+
+        setTimeout(() => {
+          submitBtn.textContent = 'Send Message →';
+          submitBtn.disabled = false;
+          submitBtn.style.background = '';
+          formNote.textContent = '';
+        }, 5000);
+      }, 1200);
+    });
+  }
+
+
+  /* ─── 10. Expertise Card Hover Tilt ─── */
+  const expCards = document.querySelectorAll('.exp-card');
+
+  expCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+      card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+
+  /* ─── 11. Counter Animation for Hero Stats ─── */
+  function animateCounter(el, target, suffix, duration = 1500) {
+    let start = 0;
+    const step = target / (duration / 16);
+    const update = () => {
+      start += step;
+      if (start < target) {
+        el.textContent = Math.floor(start) + suffix;
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target + suffix;
+      }
+    };
+    update();
+  }
+
+  const heroSection = document.getElementById('hero');
+  let countersAnimated = false;
+
+  const heroObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !countersAnimated) {
+      countersAnimated = true;
+      // Counters are visual-only, numbers embedded in HTML spans
+      // This adds a subtle fade-in effect for stat numbers
+      document.querySelectorAll('.stat-num').forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(10px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        }, 600 + i * 150);
+      });
+    }
+  }, { threshold: 0.5 });
+
+  if (heroSection) heroObserver.observe(heroSection);
+
+
+  /* ─── 12. Marquee Pause on Hover ─── */
+  const marqueeTrack = document.querySelector('.marquee-track');
+  if (marqueeTrack) {
+    marqueeTrack.addEventListener('mouseenter', () => {
+      marqueeTrack.style.animationPlayState = 'paused';
+    });
+    marqueeTrack.addEventListener('mouseleave', () => {
+      marqueeTrack.style.animationPlayState = 'running';
+    });
+  }
+
+
+  /* ─── 13. Poem Card Typewriter Effect (subtle) ─── */
+  const poemCard = document.querySelector('.poem-card');
+  if (poemCard) {
+    const poemObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        poemCard.style.opacity = '0';
+        poemCard.style.transform = 'translateY(20px)';
+        poemCard.style.transition = 'opacity 1s ease 0.3s, transform 1s ease 0.3s';
+        setTimeout(() => {
+          poemCard.style.opacity = '1';
+          poemCard.style.transform = 'none';
+        }, 50);
+        poemObserver.unobserve(poemCard);
+      }
+    }, { threshold: 0.3 });
+    poemObserver.observe(poemCard);
+  }
+
+
+  /* ─── 14. Work Card Stagger ─── */
+  const workCards = document.querySelectorAll('.work-card');
+  const workObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const cards = document.querySelectorAll('.work-card');
+        cards.forEach((card, idx) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(40px)';
+          card.style.transition = `opacity 0.7s ease ${idx * 0.15}s, transform 0.7s ease ${idx * 0.15}s`;
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'none';
+          }, 50 + idx * 150);
+        });
+        workObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+
+  if (workCards.length > 0) workObserver.observe(workCards[0].parentElement);
+
+
+  /* ─── 15. Platform Pills Hover Ripple ─── */
+  document.querySelectorAll('.plat').forEach(plat => {
+    plat.addEventListener('click', () => {
+      plat.style.transform = 'scale(0.95)';
+      setTimeout(() => { plat.style.transform = ''; }, 150);
+    });
+  });
+
+
+  /* ─── 16. Page Load Entrance ─── */
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.5s ease';
+  window.addEventListener('load', () => {
+    document.body.style.opacity = '1';
+  });
+
+
+  /* ─── Console Easter Egg ─── */
+  console.log('%cKamal Kapoor', 'color:#C9A84C; font-size:2rem; font-weight:bold;');
+  console.log('%cStrategic Partner in Growth | Mumbai, India', 'color:#8A8278; font-size:1rem;');
+  console.log('%c📩 kamal0305@gmail.com', 'color:#E8C97A; font-size:0.9rem;');
+
+});
+
+</script>
+</body>
+</html>
